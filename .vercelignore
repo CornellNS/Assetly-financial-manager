@@ -1,0 +1,6 @@
+.next
+node_modules
+release
+test-results
+public/downloads
+*.log

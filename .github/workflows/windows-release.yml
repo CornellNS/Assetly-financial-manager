@@ -1,0 +1,75 @@
+name: Windows Desktop Release
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  windows-exe:
+    name: Build signed Windows installer
+    runs-on: windows-latest
+    env:
+      AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+      AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+      AZURE_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Finance tests
+        run: npm run test:finance
+
+      - name: Verify Windows signing secrets
+        shell: pwsh
+        run: |
+          if (
+            [string]::IsNullOrWhiteSpace($env:AZURE_TENANT_ID) -or
+            [string]::IsNullOrWhiteSpace($env:AZURE_CLIENT_ID) -or
+            [string]::IsNullOrWhiteSpace($env:AZURE_CLIENT_SECRET)
+          ) {
+            throw "Missing AZURE_TENANT_ID, AZURE_CLIENT_ID, or AZURE_CLIENT_SECRET repository secret. Add Azure Artifact Signing credentials before creating release installers."
+          }
+
+      - name: Build signed Windows installer
+        run: npm run electron:win
+
+      - name: Upload Windows installer artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Assetly-Financial-Manager-Windows-${{ github.ref_name || github.run_number }}
+          path: release/Assetly-Financial-Manager-Setup-*.exe
+          if-no-files-found: error
+
+      - name: Publish installer on tagged releases
+        if: startsWith(github.ref, 'refs/tags/')
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          $tag = "${{ github.ref_name }}"
+          $installer = Get-ChildItem "release/Assetly-Financial-Manager-Setup-*.exe" | Select-Object -First 1
+          if (-not $installer) {
+            throw "No Windows installer was created."
+          }
+
+          gh release view $tag *> $null
+          if ($LASTEXITCODE -ne 0) {
+            gh release create $tag --title "Assetly Financial Manager $tag" --notes "Signed Windows installer for Assetly Financial Manager $tag."
+          }
+
+          gh release upload $tag $installer.FullName

@@ -1,26 +1,112 @@
 {
   "name": "finance-app",
   "version": "0.1.0",
+  "description": "Private finance workspace for tracking cash flow, debt, credit cards, taxes, stocks, and crypto.",
+  "author": "Assetly",
   "private": true,
+  "main": "electron/main.mjs",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "test:finance": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --test --experimental-strip-types src/lib/finance-data.test.ts",
+    "electron:dev": "concurrently -k \"npm run dev\" \"wait-on http://localhost:3000 && electron .\"",
+    "electron:build-next": "node scripts/build-electron-next.mjs",
+    "electron:pack": "npm run electron:build-next && electron-builder --dir",
+    "electron:dist": "npm run electron:build-next && electron-builder",
+    "electron:mac": "npm run electron:build-next && electron-builder --mac",
+    "electron:win": "npm run electron:build-next && electron-builder --win nsis --x64 --publish never",
+    "electron:win:pack": "npm run electron:build-next && electron-builder --win --x64 --dir",
+    "upload:assetly-installer": "node scripts/upload-assetly-installer.mjs"
+  },
+  "build": {
+    "appId": "com.assetly.financialmanager",
+    "productName": "Assetly Financial Manager",
+    "asar": true,
+    "asarUnpack": [
+      ".next/standalone/**/*"
+    ],
+    "files": [
+      "electron/**/*",
+      ".next/standalone/**/*",
+      "package.json"
+    ],
+    "directories": {
+      "output": "release",
+      "buildResources": "electron/assets"
+    },
+    "mac": {
+      "category": "public.app-category.finance",
+      "icon": "icon.icns",
+      "artifactName": "Assetly-Financial-Manager-mac-${arch}.${ext}",
+      "hardenedRuntime": true,
+      "notarize": true,
+      "target": [
+        "dmg",
+        "zip"
+      ]
+    },
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "icon.ico",
+      "artifactName": "Assetly-Financial-Manager-Setup-${version}.${ext}",
+      "azureSignOptions": {
+        "endpoint": "https://eus.codesigning.azure.net/",
+        "codeSigningAccountName": "assetlysigning2",
+        "certificateProfileName": "assetlyprod",
+        "publisherName": "Cornell Schultz",
+        "fileDigest": "SHA256",
+        "timestampDigest": "SHA256",
+        "timestampRfc3161": "http://timestamp.acs.microsoft.com"
+      }
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowElevation": false,
+      "allowToChangeInstallationDirectory": false,
+      "perMachine": false,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Assetly Financial Manager",
+      "deleteAppDataOnUninstall": false
+    }
   },
   "dependencies": {
+    "@ai-sdk/openai-compatible": "^1.0.39",
+    "@ai-sdk/react": "^3.0.194",
+    "@radix-ui/react-slot": "^1.2.4",
+    "@vercel/blob": "^2.4.0",
+    "ai": "^6.0.192",
+    "class-variance-authority": "^0.7.1",
+    "lucide-react": "^1.16.0",
+    "motion": "^12.40.0",
     "next": "16.2.6",
     "react": "19.2.4",
-    "react-dom": "19.2.4"
+    "react-dom": "19.2.4",
+    "resend": "^6.12.4",
+    "stripe": "^22.2.0",
+    "zod": "^4.4.3"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "concurrently": "^10.0.0",
+    "electron": "^42.3.0",
+    "electron-builder": "^26.8.1",
     "eslint": "^9",
     "eslint-config-next": "16.2.6",
     "tailwindcss": "^4",
-    "typescript": "^5"
+    "typescript": "^5",
+    "wait-on": "^9.0.10"
   }
 }

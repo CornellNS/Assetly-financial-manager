@@ -1,0 +1,116 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 4 0 R /F2 5 0 R /F3 6 0 R >> >> /Contents 7 0 R /Annots [8 0 R 9 0 R 10 0 R] >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>
+endobj
+6 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Courier >>
+endobj
+7 0 obj
+<< /Length 2520 >>
+stream
+0.12 0.44 0.26 rg
+/F2 10 Tf
+BT 56 736 Td (ASSETLY FINANCIAL MANAGER) Tj ET
+0.14 0.13 0.11 rg
+/F2 26 Tf
+BT 56 711 Td (Thank you for buying Assetly) Tj ET
+BT 56 673 Td (Financial Manager.) Tj ET
+0.14 0.13 0.11 rg
+/F1 13 Tf
+BT 56 625 Td (Assetly Financial Manager is desktop finance software for Windows) Tj ET
+BT 56 606 Td (desktops and Mac OS.) Tj ET
+0.14 0.13 0.11 rg
+/F2 16 Tf
+BT 56 569 Td (Choose your desktop version) Tj ET
+0.14 0.13 0.11 rg
+/F1 12 Tf
+BT 56 537 Td (Your app download is hosted securely through Assetly. Start here, choose Windows) Tj ET
+BT 56 519 Td (or macOS, then continue to Stripe checkout:) Tj ET
+0.12 0.44 0.26 rg
+/F3 12 Tf
+BT 56 495 Td (https://assetlymanager.online/#download) Tj ET
+0.14 0.13 0.11 rg
+/F2 16 Tf
+BT 56 457 Td (How your Etsy purchase is delivered) Tj ET
+0.14 0.13 0.11 rg
+/F1 12 Tf
+BT 56 425 Td (1. We generate a private Stripe promo code for your Etsy order.) Tj ET
+0.14 0.13 0.11 rg
+/F1 12 Tf
+BT 56 403 Td (2. Your promo code will be delivered within the next 24 hours, and usually) Tj ET
+BT 56 385 Td (within 1 hour.) Tj ET
+0.14 0.13 0.11 rg
+/F1 12 Tf
+BT 56 363 Td (3. When you receive the code, go to https://assetlymanager.online/#download,) Tj ET
+BT 56 345 Td (choose Windows or macOS, enter your promo code at Stripe checkout, and complete) Tj ET
+BT 56 327 Td (checkout for $0.) Tj ET
+0.14 0.13 0.11 rg
+/F1 12 Tf
+BT 56 305 Td (4. After checkout is complete, Assetly will open the secure download page for) Tj ET
+BT 56 287 Td (the desktop app.) Tj ET
+0.14 0.13 0.11 rg
+/F1 12 Tf
+BT 56 265 Td (5. After Assetly opens successfully, you can delete the downloaded ZIP or EXE) Tj ET
+BT 56 247 Td (installer from your Downloads folder to save space. Deleting that installer file) Tj ET
+BT 56 229 Td (will not uninstall Assetly.) Tj ET
+0.14 0.13 0.11 rg
+/F2 16 Tf
+BT 56 191 Td (Need the download again later?) Tj ET
+0.14 0.13 0.11 rg
+/F1 12 Tf
+BT 56 159 Td (After checkout, you can recover your download here:) Tj ET
+0.12 0.44 0.26 rg
+/F3 12 Tf
+BT 56 135 Td (https://assetlymanager.online/checkout/recover) Tj ET
+0.43 0.40 0.36 rg
+/F1 12 Tf
+BT 56 107 Td (Use the same email you used at Stripe checkout. If your email does not work yet,) Tj ET
+BT 56 89 Td (email support@assetlymanager.online with your Etsy order number and we will send) Tj ET
+BT 56 71 Td (your private download link.) Tj ET
+0.43 0.40 0.36 rg
+/F1 11 Tf
+BT 56 29 Td (Support: support@assetlymanager.online) Tj ET
+0.43 0.40 0.36 rg
+/F1 11 Tf
+BT 56 9 Td (Privacy Policy: https://assetlymanager.online/privacy) Tj ET
+endstream
+endobj
+8 0 obj
+<< /Type /Annot /Subtype /Link /Rect [56 492 336.79999999999995 513] /Border [0 0 0] /A << /S /URI /URI (https://assetlymanager.online/#download) >> >>
+endobj
+9 0 obj
+<< /Type /Annot /Subtype /Link /Rect [56 132 387.2 153] /Border [0 0 0] /A << /S /URI /URI (https://assetlymanager.online/checkout/recover) >> >>
+endobj
+10 0 obj
+<< /Type /Annot /Subtype /Link /Rect [56 6 359.16 25] /Border [0 0 0] /A << /S /URI /URI (https://assetlymanager.online/privacy) >> >>
+endobj
+xref
+0 11
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000115 00000 n 
+0000000290 00000 n 
+0000000360 00000 n 
+0000000435 00000 n 
+0000000503 00000 n 
+0000003075 00000 n 
+0000003242 00000 n 
+0000003403 00000 n 
+trailer
+<< /Size 11 /Root 1 0 R >>
+startxref
+3554
+%%EOF

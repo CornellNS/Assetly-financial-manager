@@ -1,7 +1,13 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  devIndicators: false,
+  ...(process.env.NEXT_OUTPUT_STANDALONE === "true"
+    ? { output: "standalone" as const }
+    : {}),
+  turbopack: {
+    root: process.cwd(),
+  },
 };
 
 export default nextConfig;
