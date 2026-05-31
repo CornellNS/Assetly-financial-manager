@@ -3,9 +3,9 @@ import path from "node:path";
 import { spawnSync } from "node:child_process";
 
 const root = process.cwd();
-const nextCommand = process.platform === "win32" ? "npx.cmd" : "npx";
+const nextCliPath = path.join(root, "node_modules", "next", "dist", "bin", "next");
 
-const build = spawnSync(nextCommand, ["next", "build"], {
+const build = spawnSync(process.execPath, [nextCliPath, "build"], {
   cwd: root,
   env: {
     ...process.env,
@@ -15,6 +15,10 @@ const build = spawnSync(nextCommand, ["next", "build"], {
 });
 
 if (build.status !== 0) {
+  if (build.error) {
+    console.error(build.error);
+  }
+
   process.exit(build.status ?? 1);
 }
 
